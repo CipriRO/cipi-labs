@@ -1,4 +1,4 @@
 
 export default function Home() {
-  return <h1>Hi</h1>;
+  return <main className="bg-secondary-50 flex-1 h-96 rounded-xl shadow-lg"></main>;
 }
