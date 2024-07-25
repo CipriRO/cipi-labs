@@ -7,7 +7,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 flex items-center justify-between px-14 py-7">
+    <header className="z-50 sticky top-0 flex items-center justify-between bg-background px-14 py-7 shadow-sm">
       <h2 className="text-xl font-semibold">Dev Playground</h2>
       <nav className="space-x-4">
         {links.map((link, id) => (
@@ -29,6 +29,6 @@ const Header = () => {
 export default Header;
 
 const links = [
-  { name: "Products", href: "/" },
+  { name: "Products", href: "/products" },
   { name: "Tasks", href: "/todos" },
 ];

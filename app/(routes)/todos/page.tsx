@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <main>page</main>
+    <main>tasks</main>
   )
 }
 export default page
