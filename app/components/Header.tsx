@@ -30,5 +30,5 @@ export default Header;
 
 const links = [
   { name: "Products", href: "/products" },
-  { name: "Tasks", href: "/todos" },
+  { name: "Tasks", href: "/tasks" },
 ];

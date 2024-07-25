@@ -18,13 +18,8 @@ type Products = {
 };
 
 export default function Home() {
-  const [products, setProducts] = useState<
-    Products | { products: []; total: number; skip: number; limit: number }
-  >({
+  const [products, setProducts] = useState<Products | { products: [] }>({
     products: [],
-    total: 0,
-    skip: 0,
-    limit: 0,
   });
   const [index, setIndex] = useState(20);
   const [hasMore, setHasMore] = useState(true);
@@ -71,7 +66,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">Products</h1>
+      <h1 className="mb-4 mt-2 text-2xl font-bold">Products</h1>
       <InfiniteScroll
         className="space-y-8"
         dataLength={products.products.length}
