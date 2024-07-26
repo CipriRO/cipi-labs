@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/app/libs/utils";
-import { MouseEventHandler, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 
 type Tasks =
   | {
@@ -15,12 +15,12 @@ type Tasks =
 const TasksPage = () => {
   const [tasks, setTasks] = useState<Tasks>([]);
 
-  const ToggleCompleted = (id: number) => {
+  const ToggleCompleted = (id: number, e: ChangeEvent<HTMLInputElement>) => {
     setTasks((prev) => {
       if (tasks === null || !tasks) return prev;
 
       const newTodos = prev.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task,
+        task.id === id ? { ...task, completed: e.target.checked } : task,
       );
       return [...newTodos];
     });
@@ -45,16 +45,42 @@ const TasksPage = () => {
     <main>
       <h1 className="mb-4 mt-2 text-2xl font-bold">Tasks</h1>
 
-      <article className="space-y-2 max-w-[500px] mx-auto">
-        {tasks?.map((task) => (
-          <Task
-            onClick={() => ToggleCompleted(task.id)}
-            key={task.id}
-            id={task.id}
-            todo={task.todo}
-            completed={task.completed}
-          />
-        ))}
+      <article className="mx-auto max-w-[500px]">
+        {tasks?.find((task) => !task.completed) && (
+          <h2 className="mb-4 mt-2 text-xl font-semibold">To do</h2>
+        )}
+        <section className="space-y-2">
+          {tasks?.map(
+            (task) =>
+              !task.completed && (
+                <Task
+                  ToggleCompleted={ToggleCompleted}
+                  key={task.id}
+                  id={task.id}
+                  todo={task.todo}
+                  completed={task.completed}
+                />
+              ),
+          )}
+        </section>
+
+        {tasks?.find((task) => task.completed) && (
+          <h2 className="mb-4 mt-2 text-xl font-semibold">Completed</h2>
+        )}
+        <section className="space-y-2">
+          {tasks?.map(
+            (task) =>
+              task.completed && (
+                <Task
+                  ToggleCompleted={ToggleCompleted}
+                  key={task.id}
+                  id={task.id}
+                  todo={task.todo}
+                  completed={task.completed}
+                />
+              ),
+          )}
+        </section>
       </article>
     </main>
   );
@@ -65,25 +91,28 @@ const Task = ({
   id,
   todo,
   completed,
-  onClick,
+  ToggleCompleted,
 }: {
   id: number;
   todo: string;
   completed: boolean;
-  onClick: (id: number) => void;
+  ToggleCompleted: (id: number, e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
     <div
-      onClick={() => onClick(id)}
       className={cn(
-        "flex items-center justify-between gap-3 rounded-full bg-secondary-50 px-4 py-1 shadow-sm border-2 border-secondary-100",
+        "flex items-center gap-3 rounded-full border-2 border-secondary-100 bg-secondary-50 px-4 py-1 shadow-sm",
         {
           "opacity-60": completed,
         },
       )}
     >
-      <h2 className="font-medium line-clamp-1">{todo}</h2>
-      <button className="text-nowrap">{completed ? 'Remove mark' : 'Mark as completed'}</button>
+      <input
+        checked={completed}
+        type="checkbox"
+        onChange={(e) => ToggleCompleted(id, e)}
+      />
+      <h2 className="line-clamp-1 font-medium">{todo}</h2>
     </div>
   );
 };

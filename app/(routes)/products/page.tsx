@@ -92,7 +92,7 @@ export default function Home() {
                 />
                 <div>
                   <h4 className="line-clamp-2 font-semibold">
-                    #{product.id} {product.title}
+                    {product.title}
                   </h4>
                   <p>${product.price}</p>
                 </div>
