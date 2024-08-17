@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animate-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
 @layer base {
   :root {
     --text: #111112;
@@ -136,5 +142,16 @@
     --accent-800: #b5c1e3;
     --accent-900: #dae0f1;
     --accent-950: #ecf0f8;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+
+  p {
+    @apply text-pretty;
   }
 }
