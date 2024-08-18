@@ -1,13 +1,13 @@
 import { cn } from "@/app/libs/utils";
 import { cva } from "class-variance-authority";
 
-type buttonProps = {
+type buttonProps = React.ComponentPropsWithoutRef<"button"> & {
   className: string;
   children: React.ReactNode;
 };
 
 export const linkVariants = cva(
-  "transition-all hover:font-semibold font-medium",
+  "transition-all hover:font-bold font-medium",
 );
 
 export const buttonVariants = cva(

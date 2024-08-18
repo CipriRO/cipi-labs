@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        blob: "blob 12s infinite",
+        blob: "blob 7s infinite",
       },
       keyframes: {
         blob: {
