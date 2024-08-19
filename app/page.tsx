@@ -8,10 +8,8 @@ import { cn } from "./libs/utils";
 
 export default function Home() {
   return (
-    <main className="relative flex flex-col items-center space-y-7">
+    <main className="flex flex-col items-center space-y-7">
       <Main />
-
-      <BackgroundAnimation />
     </main>
   );
 }
@@ -59,12 +57,5 @@ const Main = () => (
       Let&apos;s Explore
       <ChevronRight height={24} width={24} />
     </Link>
-  </>
-);
-
-const BackgroundAnimation = () => (
-  <>
-    <div className="absolute -left-8 -top-14 -z-50 size-[400px] animate-blob rounded-full bg-primary-500 opacity-10 mix-blend-lighten blur-2xl" />
-    <div className="animate-delay-2000 absolute -bottom-12 -right-8 -z-50 size-[400px] animate-blob rounded-full bg-[#7A4DB3] opacity-10 mix-blend-lighten blur-2xl" />
   </>
 );

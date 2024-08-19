@@ -22,16 +22,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark bg-background text-text decoration-text">
-      <body
-        className={cn(
-          raleway.className,
-          "flex min-h-svh flex-col items-center justify-between py-4",
-        )}
-      >
-        <Navbar />
-        {children}
-        <MadeBy />
+      <body className={cn(raleway.className, "relative overflow-hidden")}>
+        <div className="flex h-svh w-full flex-col items-center justify-between overflow-auto pb-4 space-y-12">
+          <Navbar />
+          {children}
+          <MadeBy />
+        </div>
+
+        <BackgroundAnimation />
       </body>
     </html>
   );
 }
+
+const BackgroundAnimation = () => (
+  <>
+    <div className="absolute left-[21%] top-1/4 -z-50 size-[400px] animate-blob rounded-full bg-primary-500 opacity-10 mix-blend-lighten blur-2xl" />
+    <div className="animate-delay-2000 absolute bottom-[20%] right-[21%] -z-50 size-[400px] animate-blob rounded-full bg-[#7A4DB3] opacity-10 mix-blend-lighten blur-2xl" />
+  </>
+);
