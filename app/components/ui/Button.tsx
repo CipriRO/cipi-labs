@@ -7,7 +7,15 @@ type buttonProps = React.ComponentPropsWithoutRef<"button"> & {
 };
 
 export const linkVariants = cva(
-  "transition-all hover:font-bold font-medium",
+  "transition-all hover:font-bold font-medium underline",
+  {
+    variants: {
+      status: { default: "", selected: "font-bold" },
+    },
+    defaultVariants: {
+      status: "default",
+    },
+  },
 );
 
 export const buttonVariants = cva(
