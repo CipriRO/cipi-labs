@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        blob: "blob 7s infinite",
+        blob: "blob 12s infinite",
       },
       keyframes: {
         blob: {
@@ -24,6 +24,24 @@ const config: Config = {
           },
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              color: "var(--text)",
+            },
+            h2: {
+              color: "var(--text)",
+            },
+            h3: {
+              color: "var(--text)",
+            },
+            h4: {
+              color: "var(--text)",
+            },
           },
         },
       },
@@ -102,6 +120,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

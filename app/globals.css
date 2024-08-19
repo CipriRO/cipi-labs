@@ -148,7 +148,7 @@
   h2,
   h3,
   h4 {
-    @apply text-balance;
+    @apply text-balance tracking-tight;
   }
 
   p {
