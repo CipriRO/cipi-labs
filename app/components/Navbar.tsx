@@ -4,11 +4,7 @@ import Link from "next/link";
 import { linkVariants } from "./ui/Button";
 import { usePathname } from "next/navigation";
 import { cn } from "../libs/utils";
-
-export const ProjectLinks = [
-  { name: "Recipe Generator", link: "/recipe-generator" },
-  { name: "Language Translation", link: "/language-translation" },
-] as const;
+import { ProjectLinks } from "../libs/constants";
 
 const Navbar = () => {
   const pathname = usePathname();

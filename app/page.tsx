@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { buttonVariants } from "./components/ui/Button";
 import Link from "next/link";
 import { cn } from "./libs/utils";
+import { ProjectLinks } from "./libs/constants";
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ const Main = () => (
       passing by, feel free to take a peek into my digital sandbox.
     </p>
     <Link
-      href="#"
+      href={ProjectLinks[1].link}
       className={cn(
         "flex items-center rounded-full bg-text py-2 pl-5 pr-2 font-semibold text-background shadow-[0_2px_20px_rgba(237,_237,_238,_0.4)]",
         buttonVariants(),
