@@ -1,4 +1,4 @@
-import CipiLabsAI from "@/app/components/CipiLabsAI";
+import CipiLabsAI from "@/app/components/CipiLabsAI/CipiLabsAI";
 import Content from "./content.mdx";
 import { Metadata } from "next";
 
