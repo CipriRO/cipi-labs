@@ -1,10 +1,10 @@
-import Content from "./content.mdx";
-import CipiLabsAI from "@/app/components/CipiLabsAI";
 import { Page, PageContent, PageDemo } from "@/app/components/ui/Page";
+import Content from "./content.mdx";
 import { Metadata } from "next";
+import RecipeSearch from "@/app/components/RecipeSearch";
 
 export const metadata: Metadata = {
-  title: "Cipi Labs AI",
+  title: "Recipe Search",
 };
 
 const page = () => {
@@ -15,7 +15,7 @@ const page = () => {
       </PageContent>
 
       <PageDemo>
-        <CipiLabsAI />
+        <RecipeSearch />
       </PageDemo>
     </Page>
   );

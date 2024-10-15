@@ -1,6 +1,6 @@
 "use client";
 import { ArrowUp } from "lucide-react";
-import Message from "./Message";
+import Message from "./ui/Message";
 import { useChat } from "ai/react";
 import { ChatRequestOptions } from "ai";
 
@@ -33,6 +33,7 @@ const CipiLabsAI = () => {
   );
 };
 export default CipiLabsAI;
+
 
 const TextBar = ({
   input,
