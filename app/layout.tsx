@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "./libs/utils";
 import Navbar from "./components/Navbar";
 import MadeBy from "./components/MadeBy";
+import { AI } from "./libs/ai";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -21,17 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark bg-background text-text decoration-text">
-      <body className={cn(raleway.className, "h-svh relative")}>
-        <div className="flex h-svh w-full flex-col items-center justify-between pb-4 space-y-12">
-          <Navbar />
-          {children}
-          <MadeBy />
-        </div>
+    <AI>
+      <html lang="en" className="dark bg-background text-text decoration-text">
+        <body className={cn(raleway.className, "relative h-svh")}>
+          <div className="flex h-svh w-full flex-col items-center justify-between space-y-12 pb-4">
+            <Navbar />
+            {children}
+            <MadeBy />
+          </div>
 
-        <BackgroundAnimation />
-      </body>
-    </html>
+          <BackgroundAnimation />
+        </body>
+      </html>
+    </AI>
   );
 }
 
