@@ -2,7 +2,7 @@
 import { ArrowUp } from "lucide-react";
 import { useActions, useUIState } from "ai/rsc";
 import { AI } from "../libs/ai";
-import { FormEvent } from "react";
+import React, { FormEvent } from "react";
 import Message from "./ui/Message";
 
 const RecipeSearch = () => {
@@ -12,43 +12,37 @@ const RecipeSearch = () => {
     <div className="relative flex h-full w-[420px] flex-col items-center overflow-hidden rounded-3xl bg-slate-700/20 pl-4">
       <div className="flex h-full w-full flex-col space-y-2.5 overflow-auto pb-[72px] pr-4 pt-4">
         {messages.map((message) => (
-          <Message
-            key={message.id}
-            variant={message.role === "user" ? "primary" : "secondary"}
-          >
-            {message.display}
-          </Message>
+          <React.Fragment key={message.id}>{message.display}</React.Fragment>
         ))}
       </div>
 
-      <TextBar messages={messages} setMessages={setMessages} />
+      <TextBar setMessages={setMessages} />
     </div>
   );
 };
 export default RecipeSearch;
 
-const TextBar = ({
-  messages,
-  setMessages,
-}: {
-  messages: any;
-  setMessages: (v: any) => void;
-}) => {
+const TextBar = ({ setMessages }: { setMessages: (v: any) => void }) => {
   const { sendMessage } = useActions<typeof AI>();
 
   const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("message:", e.target.message.value);
+    const prompt = e.target.message.value;
+    e.target.message.value = "";
 
-    setMessages([
-      ...messages,
-      { id: Date.now(), role: "user", display: e.target.message.value },
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        role: "user",
+        display: <Message variant="primary">{prompt}</Message>,
+      },
     ]);
 
-    const response = await sendMessage(e.target.message.value);
+    const response = await sendMessage(prompt);
 
-    setMessages([
-      ...messages,
+    setMessages((prev) => [
+      ...prev,
       { id: Date.now(), role: "assistant", display: response },
     ]);
   };

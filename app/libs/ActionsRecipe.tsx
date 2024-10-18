@@ -22,12 +22,11 @@ export const sendMessage = async (prompt: string) => {
   const result = await streamUI({
     model: google("gemini-1.5-pro"),
     messages: history.get(),
-    prompt,
     text: ({ content }) => <Message variant={"secondary"}>{content}</Message>,
     tools: {},
   });
 
   history.done([...history.get(), { role: "assistant", content: result }]);
 
-  return result;
+  return result.value;
 };
